@@ -116,14 +116,14 @@ public partial class AddProperty : System.Web.UI.Page
         String CS = ConfigurationManager.ConnectionStrings["RentrackdbConnectionString"].ConnectionString;
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand com = new SqlCommand("SELECT city_id FROM [City] WHERE city_name = '" + cityddl.SelectedItem.Value + "'", con);
+            /*SqlCommand com = new SqlCommand("SELECT city_id FROM [City] WHERE city_name = '" + cityddl.SelectedItem.Value + "'", con);
             
             con.Open();
             int tbcity = (int)com.ExecuteScalar();
             com.ExecuteNonQuery();
-            com.Parameters.Clear();
+            com.Parameters.Clear();*/
 
-            SqlCommand cmd = new SqlCommand("INSERT INTO [Area](area_name, street, city_id) VALUES ('" + tbarea.Text + "','" + tbstreet.Text + "','" + tbcity + "')", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO [Area](area_name, street) VALUES ('" + tbarea.Text + "','" + tbstreet.Text + "')", con);
             SqlCommand cmd1 = new SqlCommand("INSERT INTO [Property](property_title, property_type, property_purpose, property_desc, property_price, property_code, is_sold, is_rented) VALUES ('" + tbproptitle.Text + "','"+ propertytypedropdown.SelectedItem.Value + "','" + proppurpose + "','" + tbpropdesc.Text + "','" + tbprice.Text + "','" + propcode + "','" + 0 + "','" + 0 + "')", con);
             con.Open();
             cmd.ExecuteNonQuery();
