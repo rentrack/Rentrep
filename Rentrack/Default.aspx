@@ -9,6 +9,8 @@
     <!--Font Awesome-->
     <link rel="stylesheet" href="Content/font-awesome.min.css"/>
 
+    <title>Rentrack</title>
+
     <script>
         $(document).ready(function () {
             $("#buybutton").css({ "color": "#eda136", "border-bottom": "3px solid #eda136" });
@@ -84,7 +86,7 @@
             padding: 90px 0px 0px 0px;
             width:100%;
             height: 500px;
-            display:flexbox;
+            display:flex;
             flex-direction: column;
             text-align: center;
         }
@@ -236,6 +238,13 @@
                 transform:translateY(-2px);
                 transition-duration: 0.5s;
                 background-color: #364b96;
+            }
+            #osbutton a{
+                color: white;
+            }
+            #osbutton a:hover{
+                text-decoration: none;
+                color: white;
             }
         #ostitle {
             font-family: Georgia;
@@ -496,7 +505,7 @@
                 <div class="col-xl-3 col-lg-12 col-md-6 serviceblock morediv">
                     <img src="Images/am.jpg" class="img-fluid osimg" id="moreimg"/>
                     <p class="osheadings" id="moreheading">... and more.</p>
-                    <a href="#"><button id="osbutton" class="btn">Our Services</button></a>
+                    <button id="osbutton" class="btn"><a href="OurServices.aspx">Our Services</a></button>
                 </div>
             </div>
 

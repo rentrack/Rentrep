@@ -145,6 +145,7 @@
             padding-bottom: 20px;
             font-family: Calibri;
             font-size: 20px;
+            font-weight: 300;
         }
         #lowerfooter {
             background-color: #192347;
@@ -168,8 +169,8 @@
 <body>
     <form id="form1" runat="server">
         <!--Header-->
-        <nav class="navbar navbar-expand-md navbar-dark navbar-custom sticky-top">
-          <a class="navbar-brand" href="Default.aspx"><img class="img-responsive" src="Images/rentracklogo.jpg" height="40" /></a>
+        <nav class="navbar navbar-expand-md navbar-dark navbar-custom sticky-top" id="header">
+          <a class="navbar-brand" href="Default.aspx"><img class="img-responsive" src="Images/rentracklogo.jpg" height="40" title="Home"/></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -184,6 +185,11 @@
               <!--Property List-->
               <li class="nav-item header-item" >
                 <a class="nav-link" href="#" id="headerproperty">Properties</a>
+              </li>
+
+              <!--Add Property-->
+              <li class="nav-item header-item" >
+                <a class="nav-link" href="AddProperty.aspx" id="headeraddproperty">Add Property</a>
               </li>
 
               <!--Agent Search Bar-->
@@ -228,14 +234,14 @@
                     </ul>
                     <ul id="Ul1" class="col-lg-2 col-md-3 col-sm-3">
                         <li class="footerheadings">COMPANY</li>
-                        <a href="#"><li>Our Services</li></a>
-                        <a href="#"><li>FAQ</li></a>
+                        <a href="OurServices.aspx"><li>Our Services</li></a>
+                        <a href="FAQ.aspx"><li>FAQ</li></a>
                         <a href="#"><li>Email Us</a>
                     </ul>
                     <ul id="Ul2" class="col-lg-2 col-md-3 col-sm-3">
                         <li class="footerheadings">CONNECT</li>
                         <a href="#"><li>Agents</li></a>
-                        <a href="#"><li>Add Property</li></a>
+                        <a href="AddProperty.aspx"><li>Add Property</li></a>
                         <a href="#"><li>Properties</li></a>
                     </ul>
             </div>
