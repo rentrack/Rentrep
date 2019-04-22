@@ -52,7 +52,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="container-fluid" style="width: 100%; margin: 0px; padding: 0px">
+    <div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div id="box" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div id="form">
             

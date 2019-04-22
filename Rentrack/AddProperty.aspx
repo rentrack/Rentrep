@@ -1,13 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HeaderandFooter.master" AutoEventWireup="true" CodeFile="AddProperty.aspx.cs" Inherits="AddProperty" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <title>Add Property</title>
     <script>
         $(document).ready(function () {
-            if ( window.history.replaceState ) {
-                window.history.replaceState( null, null, window.location.href );
-            }
-            
+             
         });
 
         function isNumberKey(evt)
@@ -26,7 +22,7 @@
         #centerdiv {
             padding: 0px;
             box-shadow: 0px 0px 15px #AAA;
-            /*margin-top: 3%;*/
+            margin-top: 3%;
             margin-bottom: 3%;
             border-radius: 5px;
         }
@@ -38,6 +34,8 @@
             align-items: center;
             justify-content: center;
             padding: 5% 0% 5% 0%;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
         }
 
         #addpropheading{
@@ -177,7 +175,6 @@
         .prevbutton{
             padding: 10px 35px 10px 35px;
             color: black;
-            background-color: #bbb;
         }
         .prevbutton:hover{
             transition-duration: 0.7s;
@@ -207,42 +204,16 @@
             color: green;
             font-size: 22px;
         }
-        #locinputdiv{
-             display: grid; 
-             grid-gap: 10px;
-             grid-template-columns: 1fr 1fr 1fr;
-        }
-        .inlinefields{
-            margin-right: 10px;
-        }
-        @media (max-width: 1000px){
-            #locinputdiv{
-                grid-template-rows: 1fr 1fr 1fr;
-                grid-template-columns: none;
-            }
-        }
-        @media (max-width: 768px){
-            #theprogressbar, #progresstext{
-                display: none;
-            }
-            #topdiv{
-                border-top-left-radius: 5px;
-                border-top-right-radius: 5px;
-            }
-            #centerdiv {
-                margin-top: 40px;
-                margin-bottom: 40px;
-            }
-        }
     </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="row">
         <div class="offset-lg-2 col-lg-8 offset-md-2 col-md-8 offset-sm-2 offset-1 col-10 container-fluid" id="centerdiv">
             
             <div id="topdiv">
                 <!--Add Property Heading -->
-                <p id="addpropheading">Post your Property</p>
+                <p id="addpropheading">Add a Property</p>
 
                 <!--The Progress Bar -->
                 <div id="theprogressbar">
@@ -276,30 +247,7 @@
 
                 <!--Property Type and Location Form -->
                 
-                <div runat="server" id="proptypediv" style="padding-bottom: 3%; padding-top: 3%" class="offset-lg-2 col-lg-8 offset-1 col-10" >
-                    <p class="heading">Property Location</p>
-                    <div id="locinputdiv">
-                        <div class="dropdowndiv">
-                            <label>City<span class="required-sign"> *</span></label><br />
-                            <asp:DropDownList ID="cityddl" runat="server" class="dropdowndesign narrower inlinefields" OnSelectedIndexChanged="cityddl_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorddcity" runat="server" ErrorMessage="This field is required" CssClass="text-danger error-design" ControlToValidate="cityddl" InitialValue="0"></asp:RequiredFieldValidator>
-                        </div>
-
-                        <div class="dropdowndiv">
-                            <label>Area<span class="required-sign"> *</span></label><br />
-                            <asp:DropDownList ID="areaddl" runat="server" class="dropdowndesign narrower inlinefields" OnSelectedIndexChanged="areaddl_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>                   
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorddarea" runat="server" ErrorMessage="This field is required" CssClass="text-danger error-design" ControlToValidate="areaddl" InitialValue="0"></asp:RequiredFieldValidator>
-                        </div>
-                        
-                        <div class="dropdowndiv" style="margin-top: 5px">
-                            <label>Subarea</label><br />
-                            <asp:DropDownList ID="subareaddl" runat="server" class="dropdowndesign narrower inlinefields"></asp:DropDownList>                        
-                        </div>
-                    </div>
-                    
-                    
-                    <hr />
-                    
+                <div runat="server" id="proptypediv" style="padding-bottom: 3%; padding-top: 3%" class="offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-sm-1 col-sm-10 offset-1 col-10" >
                     <p class="heading">Property Type</p>
                     <label>Property Type<span class="required-sign"> *</span></label><br />
                     <asp:DropDownList ID="propertytypedropdown" runat="server" class="dropdowndesign narrower">
@@ -317,11 +265,31 @@
 
                     <label>Property Purpose<span class="required-sign"> *</span></label>
                     <br />
-                    <asp:RadioButton ID="sellradio" runat="server" value="Sell" Selected="True" GroupName="propertypurpose" class="proppurradios buylabel" Text=" Sell"/>
-                    <asp:RadioButton ID="rentradio" runat="server" value="Rent" GroupName="propertypurpose" class="proppurradios rentlabel" Text=" Rent"/>
-                    <br />
+                    <asp:RadioButton ID="sellradio" runat="server" value="Sell" Selected="True" GroupName="propertypurpose" class="proppurradios buylabel" Text="Sell"/>
+                    <asp:RadioButton ID="rentradio" runat="server" value="Rent" GroupName="propertypurpose" class="proppurradios rentlabel" Text="Rent"/>
                     <br />
 
+                    <hr />
+
+                    <p class="heading">Property Location</p>
+                    <label>City<span class="required-sign"> *</span></label>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="This field is required" CssClass="text-danger error-design" ControlToValidate="cityddl" InitialValue="0"></asp:RequiredFieldValidator>
+                    <asp:DropDownList ID="cityddl" runat="server" class="dropdowndesign narrower"></asp:DropDownList>
+                    <br /><br />
+
+                    <label>Area<span class="required-sign"> *</span></label>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorTbArea" runat="server" ErrorMessage="This field is required" CssClass="text-danger error-design" ControlToValidate="tbarea"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="tbarea" runat="server" class="form-control narrower areafield" placeholder="E.g: Gulshan-e-Iqbal"></asp:TextBox>                   
+                    <br />
+
+
+                    <label>Street Name</label>
+                    <asp:TextBox ID="tbstreet" runat="server" class="form-control narrower" placeholder="E.g: University Road"></asp:TextBox>
+                    <br />
+
+                    <label>Block</label>
+                    <asp:TextBox ID="tbblock" runat="server" class="form-control narrower" placeholder="E.g: Block 13-D"></asp:TextBox>
+                    <br />
 
                     <div style="width: 100%; text-align: center">
                         <!--<div class="btn nextbutton" id="ptnxtbtn"></div>-->
@@ -364,7 +332,7 @@
                     <br />
 
                     <div style="width: 100%; text-align: center; margin-top: 40px">
-                        <asp:Button ID="propdetprevbtn" runat="server" Text="BACK" class="btn btn-light prevbutton" OnClick="propdetprevbtn_Click" CausesValidation="false"/>
+                        <asp:Button ID="propdetprevbtn" runat="server" Text="BACK" class="btn btn-light prevbutton" OnClick="propdetprevbtn_Click"/>
                         <asp:Button ID="propdetnextbtn" runat="server" Text="CONTINUE" class="btn nextbutton" OnClick="propdetnextbtn_Click"/>
                     </div>
                 </div>
@@ -399,5 +367,6 @@
             
 
         </div>
+    </div>
 </asp:Content>
 
