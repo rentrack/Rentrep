@@ -208,7 +208,8 @@
                   <i class="fa fa-user"></i>
                 </a>
                 <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Login</a>
+                  <asp:LinkButton ID="loginlink" runat="server" class="dropdown-item" OnClick="Loginlinkbutton" Text="Login"></asp:LinkButton>
+                  
                   <a class="dropdown-item" href="Sign Up.aspx">Sign Up</a>
                 </div>
 
