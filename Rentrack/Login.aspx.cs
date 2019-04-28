@@ -33,29 +33,34 @@ public partial class Login : System.Web.UI.Page
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
+            SqlCommand com = new SqlCommand("SELECT user_id FROM [User] WHERE email = '" + tbemail.Text + "' and password = '" + tbpassword.Text + "'", con);
+            int user_id = (int)com.ExecuteScalar();
+            com.ExecuteNonQuery();
+            com.Parameters.Clear();
+
 
             if (dt.Rows.Count != 0)
             {
                 if(remembercheck.Checked)
                     {
-                        Response.Cookies["email"].Value = tbemail.Text;
+                        Response.Cookies["user_id"].Value = user_id;
                         Response.Cookies["password"].Value = tbpassword.Text;
 
-                        Response.Cookies["email"].Expires = DateTime.Now.AddDays(15);
+                        Response.Cookies["user_id"].Expires = DateTime.Now.AddDays(15);
                         Response.Cookies["password"].Expires = DateTime.Now.AddDays(15);
                     }
                 else
                     {
-                        Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["user_id"].Expires = DateTime.Now.AddDays(-1);
                         Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);   
                     }
 
-                Session["email"] = tbemail.Text;
+                Session["user_id"] = user_id;
                 Response.Redirect("~/Default.aspx");
             }
             else
             {
-                lblError.Text = "Email or Password is invalid!";
+                lblError.Text = "Email or Password is incorrect!";
             }
         }
     }
